@@ -56,3 +56,4 @@ function showPage(pageNumber, allStudents) {
 	}
 }
 showPage(1, allStudents);
+
