@@ -103,6 +103,10 @@ function searchBar() {
 
     studentSearch.addEventListener('keyup', (e) => {
     function searchStudentEmail() {
+
+        [...document.querySelectorAll('a')]
+    .slice(appendPageLinks - 1)
+    .forEach(i => i.style.display = 'none');
         
         var filter = input.value.toUpperCase();
         ul = document.getElementsByClassName('student-list')[0];
@@ -119,11 +123,14 @@ function searchBar() {
             }
             
         }
-        appendPageLinks(studentSearch);
+        
 
     }
-    searchStudentEmail();
-});
+        appendPageLinks(studentSearch);
+        searchStudentEmail();
+        
+    });
 }
 
 searchBar();
+
