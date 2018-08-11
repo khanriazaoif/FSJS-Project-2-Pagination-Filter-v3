@@ -62,3 +62,68 @@ function appendPageLinks(allStudents) {
 
 
 appendPageLinks(allStudents);
+
+//Exceeds
+
+function searchBar() {
+    let paging = document.getElementsByClassName('paging');
+
+    //create a div append a div with class name student-search
+    function createDiv() {
+        let div = document.createElement('div');
+        let h2 = document.querySelector('h2').parentNode;
+        h2.appendChild(div).className = 'student-search';
+        let studentSearch = document.getElementsByClassName('student-search')[0];
+    }
+    
+    function createInput() {
+        let studentSearch = document.getElementsByClassName('student-search')[0];
+        let createInput = document.createElement('input');
+        createInput.placeholder = "Search for students...";
+        studentSearch.appendChild(createInput);
+    }
+
+    function createButton(){
+        let studentSearch = document.getElementsByClassName('student-search')[0];
+        let button = document.createElement('button');
+        studentSearch.appendChild(button);
+        button.textContent = 'Search';
+    }
+    
+    //search a students name
+    createDiv();
+    createInput();
+    createButton();
+
+
+    let studentSearch = document.getElementsByClassName('student-search')[0];
+    const input = document.querySelector('input');
+    
+
+
+    studentSearch.addEventListener('keyup', (e) => {
+    function searchStudentEmail() {
+        
+        var filter = input.value.toUpperCase();
+        ul = document.getElementsByClassName('student-list')[0];
+        li = ul.getElementsByClassName('student-item cf');
+        for (let i = 0; i < li.length; i++) {
+            a = li[i].getElementsByClassName('email')[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+                console.log(paging);
+                console.log(paging[2]);
+              //  paging[i].style.display = "none";
+            }
+            
+        }
+        appendPageLinks(studentSearch);
+
+    }
+    searchStudentEmail();
+});
+}
+
+searchBar();
