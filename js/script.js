@@ -1,12 +1,12 @@
 //selects the list items with class .student-item
-let allStudents = document.querySelectorAll('.student-item');
+const allStudents = document.querySelectorAll('.student-item');
 const studentDetails = document.querySelectorAll('.student-details');
 
-let ul = document.getElementsByTagName('ul')[0];
-let paginationDiv = ul.parentNode;
-let div = document.createElement('div');
-let createUl = document.createElement('ul');
-let createLi = document.createElement('li');
+const ul = document.getElementsByTagName('ul')[0];
+const paginationDiv = ul.parentNode;
+const div = document.createElement('div');
+const createUl = document.createElement('ul');
+const createLi = document.createElement('li');
 
 function showPage(pageNumber, allStudents) {
 	const upperIndex = (pageNumber * 10) - 1;
@@ -23,12 +23,12 @@ showPage(1, allStudents);
 
 function appendPageLinks(allStudents) {
         paginationDiv.appendChild(div).className = 'pagination';
-        let pagination = document.getElementsByClassName('pagination')[0];
+        const pagination = document.getElementsByClassName('pagination')[0];
         pagination.appendChild(createUl);
         for (let i = 0; i <= allStudents.length / 10; i++) {
             createLi.classList.add('paging');
             createUl.appendChild(createLi);
-            let a = document.createElement('a');
+            const a = document.createElement('a');
             a.setAttribute('href', '#');
             createLi.appendChild(a);
             a.textContent = [i + 1];
@@ -36,10 +36,10 @@ function appendPageLinks(allStudents) {
                 a.classList.add('active');
             }
         }
-        function paginationEventListener(){
+    function paginationEventListener(){
             pagination.addEventListener('click', (event) => {
-                let anchorTags = document.querySelectorAll('.pagination a');
-                for (let i = 0; i < anchorTags.length; i++) {
+                const anchorTags = document.querySelectorAll('.pagination a');
+               for (let i = 0; i < anchorTags.length; i++) {
                     anchorTags[i].classList.remove('active');
                 }
                 if (event.target.classList.contains('active')) {
@@ -50,7 +50,7 @@ function appendPageLinks(allStudents) {
                 }
 
                 function buttonNumber() {
-                    let button = parseInt(event.target.textContent);
+                    const button = parseInt(event.target.textContent);
                     showPage(button, allStudents);
                 }
                 buttonNumber();
@@ -66,26 +66,26 @@ appendPageLinks(allStudents);
 //Exceeds
 
 function searchBar() {
-    let paging = document.getElementsByClassName('paging');
+                            let paging = document.getElementsByClassName('paging');
 
     //create a div append a div with class name student-search
     function createDiv() {
-        let div = document.createElement('div');
-        let h2 = document.querySelector('h2').parentNode;
+        const div = document.createElement('div');
+        const h2 = document.querySelector('h2').parentNode;
         h2.appendChild(div).className = 'student-search';
-        let studentSearch = document.getElementsByClassName('student-search')[0];
+        const studentSearch = document.getElementsByClassName('student-search')[0];
     }
     
     function createInput() {
-        let studentSearch = document.getElementsByClassName('student-search')[0];
-        let createInput = document.createElement('input');
+        const studentSearch = document.getElementsByClassName('student-search')[0];
+        const createInput = document.createElement('input');
         createInput.placeholder = "Search for students...";
         studentSearch.appendChild(createInput);
     }
 
     function createButton(){
-        let studentSearch = document.getElementsByClassName('student-search')[0];
-        let button = document.createElement('button');
+        const studentSearch = document.getElementsByClassName('student-search')[0];
+        const button = document.createElement('button');
         studentSearch.appendChild(button);
         button.textContent = 'Search';
     }
@@ -96,19 +96,18 @@ function searchBar() {
     createButton();
 
 
-    let studentSearch = document.getElementsByClassName('student-search')[0];
+    const studentSearch = document.getElementsByClassName('student-search')[0];
     const input = document.querySelector('input');
     
 
 
     studentSearch.addEventListener('keyup', (e) => {
-    function searchStudentEmail() {
-
-        [...document.querySelectorAll('a')]
-    .slice(appendPageLinks - 1)
-    .forEach(i => i.style.display = 'none');
+        const yes = function searchStudentEmail() {
+    //     [...document.querySelectorAll('a')]
+    // .slice(appendPageLinks - 1)
+    // .forEach(i => i.style.display = 'none');
         
-        var filter = input.value.toUpperCase();
+    var filter = input.value.toUpperCase();
         ul = document.getElementsByClassName('student-list')[0];
         li = ul.getElementsByClassName('student-item cf');
         for (let i = 0; i < li.length; i++) {
@@ -123,14 +122,46 @@ function searchBar() {
             }
             
         }
-        
+        console.log(yes);
 
     }
-        appendPageLinks(studentSearch);
         searchStudentEmail();
         
+        // function searchPaginationLinks(){
+        //     let s = [];
+        //     for(let value of yes){
+        //         if(value.charAt(0) == "b")
+        //         s.push(value);
+        //         console.log(value);
+        //     }
+        // }
+        // searchPaginationLinks()
+
     });
 }
 
 searchBar();
+
+// let shoppingList = ["apples", "butter", "bread", "candy", "pizza", "beer", "eggs", "bacon",
+//   "tomatoes", "milk", "bananas"];
+
+// let bItems = [];
+
+// for(let item of shoppingList) {
+//   if(item.charAt(0) == "b") {
+//     bItems.push(item);
+//   }
+// }
+
+// function printItems(list) {
+//   for(let item of list) {
+//     console.log(item);
+//   }
+// }
+
+// console.log("Whole shopping list: ---");
+// printItems(shoppingList);
+// console.log("Only items that begin with the letter b: ");
+// printItems(bItems);
+
 
