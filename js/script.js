@@ -2,7 +2,7 @@
 const allStudents = document.querySelectorAll(".student-item");
 const studentDetails = document.querySelectorAll(".student-details");
 
-const ul = document.getElementsByTagName("ul")[0];
+let ul = document.getElementsByTagName("ul")[0];
 const paginationDiv = ul.parentNode;
 const div = document.createElement("div");
 const createUl = document.createElement("ul");
@@ -96,13 +96,14 @@ function searchBar() {
   const studentSearch = document.getElementsByClassName("student-search")[0];
   const input = document.querySelector("input");
 
-  studentSearch.addEventListener("keyup", e => {
-    const yes = function searchStudentEmail() {
-      //     [...document.querySelectorAll('a')]
-      // .slice(appendPageLinks - 1)
-      // .forEach(i => i.style.display = 'none');
+  let test1 = studentSearch.addEventListener("keyup", e => {
+    function searchStudentEmail() {
+      const paging = document.querySelector("li.paging");
+      if (paging) {
+        paging.parentNode.removeChild(paging);
+      }
 
-      var filter = input.value.toUpperCase();
+      let filter = input.value.toUpperCase();
       ul = document.getElementsByClassName("student-list")[0];
       li = ul.getElementsByClassName("student-item cf");
       for (let i = 0; i < li.length; i++) {
@@ -111,13 +112,10 @@ function searchBar() {
           li[i].style.display = "";
         } else {
           li[i].style.display = "none";
-          console.log(paging);
-          console.log(paging[2]);
           //  paging[i].style.display = "none";
         }
       }
-      console.log(yes);
-    };
+    }
     searchStudentEmail();
 
     // function searchPaginationLinks(){
